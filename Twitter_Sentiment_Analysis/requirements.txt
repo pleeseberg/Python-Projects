@@ -1,0 +1,16 @@
+# requirements.txt
+
+# Library for natural language processing
+nltk==3.7
+
+# Library for advanced NLP tasks
+spacy==3.4.1
+
+# Library for machine learning models and algorithms
+scikit-learn==1.2.1
+
+# Library for data manipulation and analysis
+pandas==2.1.0
+
+# This script is compatible with Python 3.x
+python>=3.6
