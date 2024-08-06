@@ -22,14 +22,14 @@ Understanding sentiment in text data can offer actionable insights for businesse
 **Confusion Matrices:**
 
 > <img src="results/confusion_matrix.png" alt="Confusion Matrix" width="300" height="300">  
-> Confusion matrices for each model, showing true positives, true negatives, false positives, and false negatives.
+Confusion matrices for each model, showing true positives, true negatives, false positives, and false negatives.
 
   
 
 **ROC Curves:**
 
 > <img src="results/roc_curve.png" alt="ROC Curve" width="300" height="300">  
-> ROC curves for each model, demonstrating their ability to distinguish between classes. AUC scores indicate model performance.
+ROC curves for each model, demonstrating their ability to distinguish between classes. AUC scores indicate model performance.
 
   
 
