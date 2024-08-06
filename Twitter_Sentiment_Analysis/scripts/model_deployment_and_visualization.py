@@ -59,6 +59,14 @@ models = {
 # Initialize metrics storage
 metrics = {'Model': [], 'Accuracy': [], 'Precision': [], 'Recall': [], 'F1-Score': []}
 
+# Define file paths for saving plots
+conf_matrix_path = 'confusion_matrix.png'
+roc_curve_path = 'roc_curve.png'
+feature_importances_path = 'feature_importances.png'
+word_cloud_path = 'word_cloud.png'
+top_tfidf_scores_path = 'top_tfidf_scores.png'
+performance_metrics_path = 'performance_metrics_comparison.png'
+
 # Evaluate models
 for name, model_path in models.items():
     print(f"\nEvaluating model {name}...")
@@ -96,7 +104,8 @@ for name, model_path in models.items():
         plt.title(f'Confusion Matrix for {name}')
         plt.xlabel('Predicted Label')
         plt.ylabel('True Label')
-        plt.show()
+        plt.savefig(conf_matrix_path)  # Save plot to file
+        plt.close()
         
         # ROC Curve
         if hasattr(model, "decision_function"):  # For models with decision function
@@ -104,7 +113,7 @@ for name, model_path in models.items():
         else:  # For models with predict_proba
             y_scores = model.predict_proba(X_test)[:, 1]
         
-        fpr, tpr, _ = roc_curve(y_test, y_scores, pos_label=4)
+        fpr, tpr, _ = roc_curve(y_test, y_scores, pos_label=1)
         auc = roc_auc_score(y_test, y_scores)
         
         plt.figure(figsize=(10, 7))
@@ -113,7 +122,8 @@ for name, model_path in models.items():
         plt.ylabel('True Positive Rate')
         plt.title('ROC Curve')
         plt.legend(loc='lower right')
-        plt.show()
+        plt.savefig(roc_curve_path)  # Save plot to file
+        plt.close()
         
         # Print AUC
         print(f"AUC for {name}: {auc:.2f}")
@@ -137,7 +147,8 @@ for name, model_path in models.items():
         plt.xticks(range(10), [features[i] for i in indices[:10]], rotation=90)
         plt.xlabel('Feature')
         plt.ylabel('Importance')
-        plt.show()
+        plt.savefig(feature_importances_path)  # Save plot to file
+        plt.close()
         
         # Print top features
         print(f"Top features for {name}:")
@@ -153,7 +164,8 @@ plt.figure(figsize=(12, 8))
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis('off')
 plt.title('Word Cloud of Tweets')
-plt.show()
+plt.savefig(word_cloud_path)  # Save plot to file
+plt.close()
 
 # Top TF-IDF Scores
 print("\nTop TF-IDF features:")
@@ -166,7 +178,8 @@ plt.figure(figsize=(12, 8))
 plt.barh(top_features, top_scores)
 plt.xlabel('TF-IDF Score')
 plt.title('Top TF-IDF Scores')
-plt.show()
+plt.savefig(top_tfidf_scores_path)  # Save plot to file
+plt.close()
 
 # Print top TF-IDF features
 for feature, score in zip(top_features, top_scores):
@@ -179,7 +192,8 @@ metrics_df.set_index('Model').plot(kind='bar')
 plt.title('Performance Metrics Comparison')
 plt.ylabel('Score')
 plt.xlabel('Model')
-plt.show()
+plt.savefig(performance_metrics_path)  # Save plot to file
+plt.close()
 
 # Print performance metrics comparison
 print("\nPerformance Metrics Comparison:")

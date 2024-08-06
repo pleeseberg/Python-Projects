@@ -4,7 +4,7 @@ from scipy.sparse import save_npz
 import os
 from tqdm import tqdm
 
-# Initialize vectorizers (consider fitting on the whole dataset if consistency is needed)
+# Initialize vectorizers
 bow_vectorizer = CountVectorizer()
 tfidf_vectorizer = TfidfVectorizer()
 
@@ -69,6 +69,6 @@ def process_chunks(file_path, output_folder, chunk_size=100000):
         print(f"Chunk {i+1} processed.")
 
 # Example usage
-file_path = '/Users/paigeleeseberg/Downloads/Python-Projects/Twitter_Sentiment_Analysis/data/preprocessed_tweets.csv'
+file_path = '/Users/paigeleeseberg/Downloads/Python-Projects/Twitter_Sentiment_Analysis/data/sample_preprocessed_tweets.csv'
 output_folder = '/Users/paigeleeseberg/Downloads/Python-Projects/Twitter_Sentiment_Analysis/data/processed_chunks'
 process_chunks(file_path, output_folder)
