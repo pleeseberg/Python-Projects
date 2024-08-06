@@ -56,7 +56,7 @@ Understanding sentiment in text data can offer actionable insights for businesse
 
 > **Logistic Regression Top Features:**  
 > <img src="results/feature_importances.png" alt="Feature Importances" width="300" height="300">  
-> Bar charts showing the top 10 features for Logistic Regression.
+Bar charts showing the top 10 features for Logistic Regression.
 
   
 
@@ -75,21 +75,21 @@ Understanding sentiment in text data can offer actionable insights for businesse
 **Word Cloud:**
 
 > <img src="results/word_cloud.png" alt="Word Cloud" width="300" height="300">  
-> Visualization of the most frequent words in the tweet text.
+Visualization of the most frequent words in the tweet text.
 
   
 
 **Top TF-IDF Scores:**
 
 > <img src="results/top_tfidf_scores.png" alt="Top TF-IDF Scores" width="300" height="300">  
-> Bar chart showing the top TF-IDF scores for terms in the dataset.
+Bar chart showing the top TF-IDF scores for terms in the dataset.
 
   
 
 **Performance Metrics Comparison:**
 
 > <img src="results/performance_metrics_comparison.png" alt="Performance Metrics Comparison" width="300" height="300">  
-> Comparison of accuracy, precision, recall, and F1-score across the models.
+Comparison of accuracy, precision, recall, and F1-score across the models.
 
   
 
