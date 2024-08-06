@@ -21,12 +21,12 @@ Understanding sentiment in text data can offer actionable insights for businesse
 
 **Confusion Matrices:**
 
-> ![Confusion Matrix](Twitter_Sentiment_Analysis/results/confusion_matrix.png)  
+> ![Confusion Matrix](results/confusion_matrix.png)  
 > Confusion matrices for each model, showing true positives, true negatives, false positives, and false negatives.
 
 **ROC Curves:**
 
-> ![ROC Curve](Twitter_Sentiment_Analysis/results/roc_curve.png)  
+> ![ROC Curve](results/roc_curve.png)  
 > ROC curves for each model, demonstrating their ability to distinguish between classes. AUC scores indicate model performance.
 
 ### Model Performance Summary
@@ -51,7 +51,7 @@ Understanding sentiment in text data can offer actionable insights for businesse
 **Feature Importances:**
 
 > **Logistic Regression Top Features:**  
-> ![Feature Importances](Twitter_Sentiment_Analysis/results/feature_importances.png)  
+> ![Feature Importances](results/feature_importances.png)  
 > Bar charts showing the top 10 features for Logistic Regression.
 
 > **Naive Bayes Top Features:**  
@@ -64,17 +64,17 @@ Understanding sentiment in text data can offer actionable insights for businesse
 
 **Word Cloud:**
 
-> ![Word Cloud](Twitter_Sentiment_Analysis/results/word_cloud.png)  
+> ![Word Cloud](results/word_cloud.png)  
 > Visualization of the most frequent words in the tweet text.
 
 **Top TF-IDF Scores:**
 
-> ![Top TF-IDF Scores](Twitter_Sentiment_Analysis/results/top_tfidf_scores.png)  
+> ![Top TF-IDF Scores](results/top_tfidf_scores.png)  
 > Bar chart showing the top TF-IDF scores for terms in the dataset.
 
 **Performance Metrics Comparison:**
 
-> ![Performance Metrics Comparison](Twitter_Sentiment_Analysis/results/performance_metrics_comparison.png)  
+> ![Performance Metrics Comparison](results/performance_metrics_comparison.png)  
 > Comparison of accuracy, precision, recall, and F1-score across the models.
 
 ## Documentation and Reporting
@@ -82,15 +82,15 @@ Understanding sentiment in text data can offer actionable insights for businesse
 The following visualizations and figures provide insights into the performance and analysis of the sentiment analysis models:
 
 - **Word Cloud:**  
-  ![Word Cloud](Twitter_Sentiment_Analysis/results/word_cloud.png)  
+  ![Word Cloud](results/word_cloud.png)  
   This word cloud visualizes the most frequent words in the tweet text, highlighting common terms associated with sentiment.
 
 - **Top TF-IDF Scores:**  
-  ![Top TF-IDF Scores](Twitter_Sentiment_Analysis/results/top_tfidf_scores.png)  
+  ![Top TF-IDF Scores](results/top_tfidf_scores.png)  
   A bar chart displaying the top TF-IDF scores for terms in the dataset, showing which terms have the highest importance.
 
 - **ROC Curves:**  
-  ![ROC Curve](Twitter_Sentiment_Analysis/results/roc_curve.png)  
+  ![ROC Curve](results/roc_curve.png)  
   ROC curves for each model, illustrating their performance in distinguishing between classes, with AUC scores indicating model accuracy.
 
 - **Performance Metrics Comparison:**  
