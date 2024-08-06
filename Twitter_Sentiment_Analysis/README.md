@@ -2,7 +2,7 @@
 
 ## Overview
 
-Sentiment analysis is a powerful tool for understanding opinions and emotions expressed in text. This project aims to develop a model to classify sentiment in text data, such as tweets or reviews, into categories like positive, negative, or neutral. By leveraging machine learning techniques, the project seeks to provide valuable insights into user sentiments and trends.
+Sentiment analysis is a powerful tool for understanding opinions and emotions expressed in text. This project aims to develop a model to classify sentiment in text data, such as tweets or reviews, into positive, negative, or neutral categories. The project seeks to provide valuable insights into user sentiments and trends by leveraging machine learning techniques.
 
 ## Motivation
 
@@ -94,15 +94,15 @@ The following visualizations and figures provide insights into the performance a
   ROC curves for each model, illustrating their performance in distinguishing between classes, with AUC scores indicating model accuracy.
 
 - **Performance Metrics Comparison:**  
-  ![Performance Metrics Comparison](Twitter_Sentiment_Analysis/results/performance_metrics_comparison.png)  
+  ![Performance Metrics Comparison](results/performance_metrics_comparison.png)  
   A comparison of accuracy, precision, recall, and F1-score across Logistic Regression, Naive Bayes, and Linear SVC models.
 
 - **Feature Importances:**  
-  ![Feature Importances](Twitter_Sentiment_Analysis/results/feature_importances.png)  
+  ![Feature Importances](results/feature_importances.png)  
   Bar charts showing the importance of the top features for each model, helping to identify key terms influencing sentiment.
 
 - **Confusion Matrix:**  
-  ![Confusion Matrix](Twitter_Sentiment_Analysis/results/confusion_matrix.png)  
+  ![Confusion Matrix](results/confusion_matrix.png)  
   Heatmaps for each model’s confusion matrix, providing a detailed view of the classification results and misclassifications.
 
 ## Challenges and Solutions
