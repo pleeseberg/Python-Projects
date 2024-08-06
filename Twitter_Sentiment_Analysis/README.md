@@ -13,50 +13,103 @@ This project focuses on developing a model to classify the sentiment of text dat
 2. **Feature Extraction:**
    - **Convert Text to Numerical Features:** Implement techniques like Bag of Words or TF-IDF using Python libraries.
 
-3. **Model Selection and Training:**
-   - **Model Selection:** Consider models such as Logistic Regression, Naive Bayes, and SVM.
-   - **Training:** Fit the selected model on the training data.
+## 3. Model Evaluation
 
-4. **Model Evaluation and Tuning:**
-   - **Evaluation Metrics:** Accuracy, precision, recall, F1-score, and confusion matrix.
-   - **Hyperparameter Tuning:** Use techniques like Grid Search or Random Search to optimize model performance.
+**Confusion Matrices:**
 
-5. **Deployment and Visualization:**
-   - **Deployment:** Save the trained model for future use.
-   - **Visualization:** Create plots or charts to illustrate model performance and insights.
+> ![Confusion Matrix](path/to/confusion_matrix.png)  
+> Confusion matrices for each model, showing true positives, true negatives, false positives, and false negatives.
 
-6. **Documentation and Sharing:**
-   - **Document Work:** Write a detailed report or create a presentation outlining the project methodology, results, and insights.
-   - **Share Project:** Upload code and documentation to a repository for public access.
+**ROC Curves:**
 
-## File Structure
+> ![ROC Curve](path/to/roc_curve.png)  
+> ROC curves for each model, demonstrating their ability to distinguish between classes. AUC scores indicate model performance.
 
-- `README.md`: Provides an overview of the project, outlines the requirements, and explains how to execute the data processing and model tasks.
-- `requirements.txt`: Lists dependencies required for the Python data processing and machine learning tasks.
-- `data/`: Directory containing the dataset file `sentiment140.csv`.
-- `src/`: Directory containing Python scripts for data preprocessing, feature extraction, model training, and evaluation.
-- `model/`: Directory for saving the trained model.
-- `results/`: Directory for storing visualizations and evaluation reports.
+### Model Performance Summary
 
-## Goals
+- **Logistic Regression:**  
+  - Cross-Validation Accuracy: 0.7563  
+  - Tuned Accuracy: 0.7560  
+  - AUC: 0.84
 
-- **Data Collection:** Obtain the Sentiment140 dataset and perform initial preprocessing.
-- **Data Preprocessing:** Tokenize, normalize, and clean text data to prepare for feature extraction.
-- **Feature Extraction:** Convert text into numerical features suitable for machine learning models.
-- **Model Training and Evaluation:** Train sentiment classification models, evaluate their performance, and tune hyperparameters.
-- **Visualization:** Visualize model performance and insights through plots and charts.
-- **Documentation:** Document the process and results, and share the project on a repository.
+- **Naive Bayes:**  
+  - Cross-Validation Accuracy: 0.7444  
+  - Tuned Accuracy: 0.7462  
+  - AUC: 0.83
 
-## Dependencies
+- **Linear SVC:**  
+  - Cross-Validation Accuracy: 0.7518  
+  - Tuned Accuracy: 0.7553  
+  - AUC: 0.84
 
-To run the scripts and models, ensure you have the following Python packages installed:
+## 4. Feature Analysis
 
-- `nltk==3.7`
-- `spacy==3.4.1`
-- `scikit-learn==1.2.1`
-- `pandas==2.1.0`
+**Feature Importances:**
 
-Install these dependencies using:
+> **Logistic Regression Top Features:**  
+> ![Feature Importances](path/to/feature_importances.png)  
+> Bar charts showing the top 10 features for Logistic Regression.
 
-```bash
-pip install -r requirements.txt
+> **Naive Bayes Top Features:**  
+> Top features with negative coefficients.
+
+> **Linear SVC Top Features:**  
+> Top features showing their importance in the Linear SVC model.
+
+## 5. Visualization and Interpretation
+
+**Word Cloud:**
+
+> ![Word Cloud](path/to/word_cloud.png)  
+> Visualization of the most frequent words in the tweet text.
+
+**Top TF-IDF Scores:**
+
+> ![Top TF-IDF Scores](path/to/top_tfidf_scores.png)  
+> Bar chart showing the top TF-IDF scores for terms in the dataset.
+
+**Performance Metrics Comparison:**
+
+> ![Performance Metrics Comparison](path/to/performance_metrics_comparison.png)  
+> Comparison of accuracy, precision, recall, and F1-score across the models.
+
+## 6. Documentation and Reporting
+
+The following visualizations and figures provide insights into the performance and analysis of the sentiment analysis models:
+
+- **Word Cloud:**  
+  ![Word Cloud](path/to/word_cloud.png)  
+  This word cloud visualizes the most frequent words in the tweet text, highlighting common terms associated with sentiment.
+
+- **Top TF-IDF Scores:**  
+  ![Top TF-IDF Scores](path/to/top_tfidf_scores.png)  
+  A bar chart displaying the top TF-IDF scores for terms in the dataset, showing which terms have the highest importance.
+
+- **ROC Curves:**  
+  ![ROC Curve](path/to/roc_curve.png)  
+  ROC curves for each model, illustrating their performance in distinguishing between classes, with AUC scores indicating model accuracy.
+
+- **Performance Metrics Comparison:**  
+  ![Performance Metrics Comparison](path/to/performance_metrics_comparison.png)  
+  A comparison of accuracy, precision, recall, and F1-score across Logistic Regression, Naive Bayes, and Linear SVC models.
+
+- **Feature Importances:**  
+  ![Feature Importances](path/to/feature_importances.png)  
+  Bar charts showing the importance of the top features for each model, helping to identify key terms influencing sentiment.
+
+- **Confusion Matrix:**  
+  ![Confusion Matrix](path/to/confusion_matrix.png)  
+  Heatmaps for each model’s confusion matrix, providing a detailed view of the classification results and misclassifications.
+
+## 7. Future Work and Improvements
+
+Future work could include:
+
+- Exploring additional features or models to improve classification performance.
+- Conducting further hyperparameter tuning to optimize model performance.
+- Analyzing sentiment trends over time or across different contexts.
+
+## Summary
+
+This sentiment analysis project involves loading and processing tweet data, training and evaluating various classification models, and analyzing the results through visualizations and feature importance. The models show competitive performance with opportunities for further enhancements.
+
