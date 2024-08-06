@@ -1,32 +1,11 @@
-# Sentiment Analysis Project
-
-## Overview
-
-Sentiment analysis is a powerful tool for understanding opinions and emotions expressed in text. This project aims to develop a model to classify sentiment in text data, such as tweets or reviews, into positive, negative, or neutral categories. The project seeks to provide valuable insights into user sentiments and trends by leveraging machine learning techniques.
-
-## Motivation
-
-Understanding sentiment in text data can offer actionable insights for businesses, social media analysts, and researchers. This project aims to apply machine learning to sentiment analysis, enhancing the ability to categorize and interpret large volumes of text data efficiently.
-
-## Requirements
-
-1. **Data Collection and Preprocessing:**
-   - **Dataset:** Sentiment140 in CSV format.
-   - **Text Preprocessing:** Use NLTK and SpaCy for tasks including tokenization, normalization, stop word removal, and stemming/lemmatization.
-
-2. **Feature Extraction:**
-   - **Convert Text to Numerical Features:** Implement techniques like Bag of Words or TF-IDF using Python libraries.
-
-## Model Evaluation
-
 **Confusion Matrices:**
 
-> ![Confusion Matrix](results/confusion_matrix.png)  
+> <img src="results/confusion_matrix.png" alt="Confusion Matrix" width="300" height="300">  
 > Confusion matrices for each model, showing true positives, true negatives, false positives, and false negatives.
 
 **ROC Curves:**
 
-> ![ROC Curve](results/roc_curve.png)  
+> <img src="results/roc_curve.png" alt="ROC Curve" width="300" height="300">  
 > ROC curves for each model, demonstrating their ability to distinguish between classes. AUC scores indicate model performance.
 
 ### Model Performance Summary
@@ -51,7 +30,7 @@ Understanding sentiment in text data can offer actionable insights for businesse
 **Feature Importances:**
 
 > **Logistic Regression Top Features:**  
-> ![Feature Importances](results/feature_importances.png)  
+> <img src="results/feature_importances.png" alt="Feature Importances" width="300" height="300">  
 > Bar charts showing the top 10 features for Logistic Regression.
 
 > **Naive Bayes Top Features:**  
@@ -64,71 +43,15 @@ Understanding sentiment in text data can offer actionable insights for businesse
 
 **Word Cloud:**
 
-> ![Word Cloud](results/word_cloud.png)  
+> <img src="results/word_cloud.png" alt="Word Cloud" width="300" height="300">  
 > Visualization of the most frequent words in the tweet text.
 
 **Top TF-IDF Scores:**
 
-> ![Top TF-IDF Scores](results/top_tfidf_scores.png)  
+> <img src="results/top_tfidf_scores.png" alt="Top TF-IDF Scores" width="300" height="300">  
 > Bar chart showing the top TF-IDF scores for terms in the dataset.
 
 **Performance Metrics Comparison:**
 
-> ![Performance Metrics Comparison](results/performance_metrics_comparison.png)  
+> <img src="results/performance_metrics_comparison.png" alt="Performance Metrics Comparison" width="300" height="300">  
 > Comparison of accuracy, precision, recall, and F1-score across the models.
-
-## Documentation and Reporting
-
-The following visualizations and figures provide insights into the performance and analysis of the sentiment analysis models:
-
-- **Word Cloud:**  
-  ![Word Cloud](results/word_cloud.png)  
-  This word cloud visualizes the most frequent words in the tweet text, highlighting common terms associated with sentiment.
-
-- **Top TF-IDF Scores:**  
-  ![Top TF-IDF Scores](results/top_tfidf_scores.png)  
-  A bar chart displaying the top TF-IDF scores for terms in the dataset, showing which terms have the highest importance.
-
-- **ROC Curves:**  
-  ![ROC Curve](results/roc_curve.png)  
-  ROC curves for each model, illustrating their performance in distinguishing between classes, with AUC scores indicating model accuracy.
-
-- **Performance Metrics Comparison:**  
-  ![Performance Metrics Comparison](results/performance_metrics_comparison.png)  
-  A comparison of accuracy, precision, recall, and F1-score across Logistic Regression, Naive Bayes, and Linear SVC models.
-
-- **Feature Importances:**  
-  ![Feature Importances](results/feature_importances.png)  
-  Bar charts showing the importance of the top features for each model, helping to identify key terms influencing sentiment.
-
-- **Confusion Matrix:**  
-  ![Confusion Matrix](results/confusion_matrix.png)  
-  Heatmaps for each model’s confusion matrix, providing a detailed view of the classification results and misclassifications.
-
-## Challenges and Solutions
-
-- **Challenge:** Handling imbalanced classes in the dataset.
-  - **Solution:** Used stratified sampling and applied class weights to improve model performance.
-
-- **Challenge:** Feature extraction from noisy text data.
-  - **Solution:** Implemented advanced text preprocessing techniques to clean and normalize data effectively.
-
-## Real-World Applications
-
-The models and findings from this project can be applied in various domains, including:
-
-- **Customer Sentiment Analysis:** Businesses can use sentiment analysis to gauge customer feedback and improve products/services.
-- **Social Media Monitoring:** Analyze public sentiment on social media platforms to understand trends and user opinions.
-- **Market Research:** Enhance market research efforts by analyzing sentiment trends and consumer behavior.
-
-## Future Work and Improvements
-
-Future work could include:
-
-- Exploring additional features or models to improve classification performance.
-- Conducting further hyperparameter tuning to optimize model performance.
-- Analyzing sentiment trends over time or across different contexts.
-
-## Summary
-
-This sentiment analysis project involves loading and processing tweet data, training and evaluating various classification models, and analyzing the results through visualizations and feature importance. The models show competitive performance with opportunities for further enhancements.
