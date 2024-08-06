@@ -17,12 +17,12 @@ This project focuses on developing a model to classify the sentiment of text dat
 
 **Confusion Matrices:**
 
-> ![Confusion Matrix](path/to/confusion_matrix.png)  
+> ![Confusion Matrix](Twitter_Sentiment_Analysis/results/confusion_matrix.png)  
 > Confusion matrices for each model, showing true positives, true negatives, false positives, and false negatives.
 
 **ROC Curves:**
 
-> ![ROC Curve](path/to/roc_curve.png)  
+> ![ROC Curve](Twitter_Sentiment_Analysis/results/roc_curve.png)  
 > ROC curves for each model, demonstrating their ability to distinguish between classes. AUC scores indicate model performance.
 
 ### Model Performance Summary
@@ -47,7 +47,7 @@ This project focuses on developing a model to classify the sentiment of text dat
 **Feature Importances:**
 
 > **Logistic Regression Top Features:**  
-> ![Feature Importances](path/to/feature_importances.png)  
+> ![Feature Importances](Twitter_Sentiment_Analysis/results/feature_importances.png)  
 > Bar charts showing the top 10 features for Logistic Regression.
 
 > **Naive Bayes Top Features:**  
@@ -60,17 +60,17 @@ This project focuses on developing a model to classify the sentiment of text dat
 
 **Word Cloud:**
 
-> ![Word Cloud](path/to/word_cloud.png)  
+> ![Word Cloud](Twitter_Sentiment_Analysis/results/word_cloud.png)  
 > Visualization of the most frequent words in the tweet text.
 
 **Top TF-IDF Scores:**
 
-> ![Top TF-IDF Scores](path/to/top_tfidf_scores.png)  
+> ![Top TF-IDF Scores](Twitter_Sentiment_Analysis/results/top_tfidf_scores.png)  
 > Bar chart showing the top TF-IDF scores for terms in the dataset.
 
 **Performance Metrics Comparison:**
 
-> ![Performance Metrics Comparison](path/to/performance_metrics_comparison.png)  
+> ![Performance Metrics Comparison](Twitter_Sentiment_Analysis/results/performance_metrics_comparison.png)  
 > Comparison of accuracy, precision, recall, and F1-score across the models.
 
 ## 6. Documentation and Reporting
@@ -78,27 +78,27 @@ This project focuses on developing a model to classify the sentiment of text dat
 The following visualizations and figures provide insights into the performance and analysis of the sentiment analysis models:
 
 - **Word Cloud:**  
-  ![Word Cloud](path/to/word_cloud.png)  
+  ![Word Cloud](Twitter_Sentiment_Analysis/results/word_cloud.png)  
   This word cloud visualizes the most frequent words in the tweet text, highlighting common terms associated with sentiment.
 
 - **Top TF-IDF Scores:**  
-  ![Top TF-IDF Scores](path/to/top_tfidf_scores.png)  
+  ![Top TF-IDF Scores](Twitter_Sentiment_Analysis/results/top_tfidf_scores.png)  
   A bar chart displaying the top TF-IDF scores for terms in the dataset, showing which terms have the highest importance.
 
 - **ROC Curves:**  
-  ![ROC Curve](path/to/roc_curve.png)  
+  ![ROC Curve](Twitter_Sentiment_Analysis/results/roc_curve.png)  
   ROC curves for each model, illustrating their performance in distinguishing between classes, with AUC scores indicating model accuracy.
 
 - **Performance Metrics Comparison:**  
-  ![Performance Metrics Comparison](path/to/performance_metrics_comparison.png)  
+  ![Performance Metrics Comparison](Twitter_Sentiment_Analysis/results/performance_metrics_comparison.png)  
   A comparison of accuracy, precision, recall, and F1-score across Logistic Regression, Naive Bayes, and Linear SVC models.
 
 - **Feature Importances:**  
-  ![Feature Importances](path/to/feature_importances.png)  
+  ![Feature Importances](Twitter_Sentiment_Analysis/results/feature_importances.png)  
   Bar charts showing the importance of the top features for each model, helping to identify key terms influencing sentiment.
 
 - **Confusion Matrix:**  
-  ![Confusion Matrix](path/to/confusion_matrix.png)  
+  ![Confusion Matrix](Twitter_Sentiment_Analysis/results/confusion_matrix.png)  
   Heatmaps for each model’s confusion matrix, providing a detailed view of the classification results and misclassifications.
 
 ## 7. Future Work and Improvements
@@ -112,4 +112,3 @@ Future work could include:
 ## Summary
 
 This sentiment analysis project involves loading and processing tweet data, training and evaluating various classification models, and analyzing the results through visualizations and feature importance. The models show competitive performance with opportunities for further enhancements.
-
