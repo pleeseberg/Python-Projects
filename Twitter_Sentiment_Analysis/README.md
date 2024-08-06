@@ -24,10 +24,14 @@ Understanding sentiment in text data can offer actionable insights for businesse
 > <img src="results/confusion_matrix.png" alt="Confusion Matrix" width="300" height="300">  
 > Confusion matrices for each model, showing true positives, true negatives, false positives, and false negatives.
 
+  
+
 **ROC Curves:**
 
 > <img src="results/roc_curve.png" alt="ROC Curve" width="300" height="300">  
 > ROC curves for each model, demonstrating their ability to distinguish between classes. AUC scores indicate model performance.
+
+  
 
 ### Model Performance Summary
 
@@ -54,11 +58,17 @@ Understanding sentiment in text data can offer actionable insights for businesse
 > <img src="results/feature_importances.png" alt="Feature Importances" width="300" height="300">  
 > Bar charts showing the top 10 features for Logistic Regression.
 
+  
+
 > **Naive Bayes Top Features:**  
 > Top features with negative coefficients.
 
+  
+
 > **Linear SVC Top Features:**  
 > Top features showing their importance in the Linear SVC model.
+
+  
 
 ## Visualization and Interpretation
 
@@ -67,15 +77,21 @@ Understanding sentiment in text data can offer actionable insights for businesse
 > <img src="results/word_cloud.png" alt="Word Cloud" width="300" height="300">  
 > Visualization of the most frequent words in the tweet text.
 
+  
+
 **Top TF-IDF Scores:**
 
 > <img src="results/top_tfidf_scores.png" alt="Top TF-IDF Scores" width="300" height="300">  
 > Bar chart showing the top TF-IDF scores for terms in the dataset.
 
+  
+
 **Performance Metrics Comparison:**
 
 > <img src="results/performance_metrics_comparison.png" alt="Performance Metrics Comparison" width="300" height="300">  
 > Comparison of accuracy, precision, recall, and F1-score across the models.
+
+  
 
 ## Documentation and Reporting
 
@@ -85,25 +101,37 @@ The following visualizations and figures provide insights into the performance a
   <img src="results/word_cloud.png" alt="Word Cloud" width="300" height="300">  
   This word cloud visualizes the most frequent words in the tweet text, highlighting common terms associated with sentiment.
 
+  
+
 - **Top TF-IDF Scores:**  
   <img src="results/top_tfidf_scores.png" alt="Top TF-IDF Scores" width="300" height="300">  
   A bar chart displaying the top TF-IDF scores for terms in the dataset, showing which terms have the highest importance.
+
+  
 
 - **ROC Curves:**  
   <img src="results/roc_curve.png" alt="ROC Curve" width="300" height="300">  
   ROC curves for each model, illustrating their performance in distinguishing between classes, with AUC scores indicating model accuracy.
 
+  
+
 - **Performance Metrics Comparison:**  
   <img src="results/performance_metrics_comparison.png" alt="Performance Metrics Comparison" width="300" height="300">  
   A comparison of accuracy, precision, recall, and F1-score across Logistic Regression, Naive Bayes, and Linear SVC models.
+
+  
 
 - **Feature Importances:**  
   <img src="results/feature_importances.png" alt="Feature Importances" width="300" height="300">  
   Bar charts showing the importance of the top features for each model, helping to identify key terms influencing sentiment.
 
+  
+
 - **Confusion Matrix:**  
   <img src="results/confusion_matrix.png" alt="Confusion Matrix" width="300" height="300">  
   Heatmaps for each model’s confusion matrix, providing a detailed view of the classification results and misclassifications.
+
+  
 
 ## Challenges and Solutions
 
