@@ -1,0 +1,10 @@
+# requirements.txt
+
+# Library for plotting
+matplotlib==3.7.1
+
+# Library for numerical operations
+numpy==1.26.0
+
+# This script is compatible with Python 3.x
+python >=3.6
