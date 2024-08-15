@@ -1,58 +1,171 @@
-## London Bike Sharing Project
+# Customer Segmentation Analysis
 
-### Overview
+## 1. Data Collection
+- **Obtain the Dataset:** Download the dataset from a reliable source (e.g., Retail Data Analytics). Ensure the dataset covers transactions from 01/12/2010 to 09/12/2011 for a UK-based online retailer.
 
-This project involves analyzing bike-sharing data from London. The goal is to explore, clean, and visualize the dataset to uncover insights about bike-sharing patterns. The final cleaned dataset is used to create visualizations in Tableau.
+## 2. Data Preparation
+### Summary of Execution:
+- **Initial Data Load:**
+  - Successfully loaded the dataset with 541,909 records.
+- **Data Cleaning:**
+  - Dropped rows with missing values in critical columns, resulting in 406,829 records.
+  - Handled missing descriptions and converted `InvoiceDate` to datetime format.
+- **RFM Metrics Calculation:**
+  - Calculated Recency, Frequency, and Monetary Value metrics.
+  - Generated an RFM DataFrame with 4,372 unique customers.
+- **Normalization:**
+  - Applied `StandardScaler` to normalize RFM features.
+  - Saved the normalized RFM data to `data/rfm_clusters.csv`.
 
-### Requirements
+## 3. Implement K-Means Clustering
+### Results Summary
 
-1. **Data Handling:**
-   - Read the dataset from the provided CSV file (`london_merged.csv`).
-   - Perform data cleaning and preprocessing using Pandas, including renaming columns, adjusting data types, and mapping categorical values.
+#### 1. Clustering with 3 Clusters
+- **Cluster Sizes:**
 
-2. **Data Cleaning and Preprocessing:**
-   - Rename columns for clarity.
-   - Convert humidity values to percentages.
-   - Map numerical values to categorical labels (seasons and weather codes).
+| Cluster | Number of Customers |
+|---------|----------------------|
+| 0       | 3,264                |
+| 1       | 1,096                |
+| 2       | 12                   |
 
-3. **Exploration and Analysis:**
-   - Print the shape and the first few rows of the dataframe to understand its structure.
-   - Display counts of unique values for relevant columns (e.g., weather codes, seasons).
+- **Summary Statistics:**
 
-4. **Output:**
-   - Save the cleaned dataframe to an Excel file (`london_bikes_final.xlsx`) for use in Tableau.
+| Cluster | Recency_scaled | Frequency_scaled | MonetaryValue_scaled |
+|---------|----------------|------------------|-----------------------|
+| 0       | High           | Low              | Low                   |
+| 1       | Intermediate   | Intermediate     | Negative               |
+| 2       | Low            | High             | Very High             |
 
-5. **Visualization:**
-   - Import the final Excel file into Tableau to create visualizations that reveal patterns and insights in the bike-sharing data.
+- **Cluster Centroids:**
 
-### File Structure
+| Centroid | Recency_scaled | Frequency_scaled | MonetaryValue_scaled |
+|----------|----------------|------------------|-----------------------|
+| 0        | Low            | Moderate         | Slightly Positive     |
+| 1        | High           | Low              | Negative              |
+| 2        | Low            | High             | Very High             |
 
-- `README.md`: Provides an overview of the project, outlines the requirements, and explains how to execute the data processing and visualization tasks.
-- `requirements.txt`: Lists dependencies required for the Python data processing tasks.
-- `data/`: Directory containing the dataset file `london_merged.csv`.
-- `src/`: Directory containing the Python script for data processing (`data_processing.py`).
-- `london_bikes_final.xlsx`: Final cleaned dataset prepared for Tableau visualization.
+- **Evaluation Metrics:**
+  - **Silhouette Score:** 0.600 (good clustering)
+  - **Davies-Bouldin Index:** 0.729 (moderate clustering quality)
+  - **Within-Cluster Sum of Squares (WCSS):** 5,408.41
 
-### Goals
+#### 2. Clustering with 6 Clusters
+- **Cluster Sizes:**
 
-- **Data Collection**: Acquire the bike-sharing dataset.
-- **Data Exploration and Manipulation**: Use Pandas to clean and preprocess the data.
-- **Visualization**: Create insightful visualizations in Tableau based on the cleaned data.
+| Cluster | Number of Customers |
+|---------|----------------------|
+| 0       | 354                  |
+| 1       | 1,068                |
+| 2       | 3                    |
+| 3       | 2,930                |
+| 4       | 13                   |
+| 5       | 4                    |
 
-### Final Visualization
+- **Summary Statistics:**
 
-You can view the final visualizations created in Tableau Public using the following link:
+| Cluster | Recency_scaled | Frequency_scaled | MonetaryValue_scaled |
+|---------|----------------|------------------|-----------------------|
+| 0       | Low            | High             | Moderate              |
+| 1       | High           | Low              | Negative              |
+| 2       | Low            | Very High        | Very High             |
+| 3       | Low            | Moderate         | Slightly Negative     |
+| 4       | Intermediate   | Moderate         | Moderate              |
+| 5       | Low            | High             | Low                   |
 
-[London Bike Sharing Dashboard](https://public.tableau.com/app/profile/paige.leeseberg/viz/LondonBikeRides_17223759852780/Dashboard1)
+- **Cluster Centroids:**
 
-### Dependencies
+| Centroid | Recency_scaled | Frequency_scaled | MonetaryValue_scaled |
+|----------|----------------|------------------|-----------------------|
+| 0        | Low            | High             | Moderate              |
+| 1        | High           | Low              | Negative              |
+| 2        | Low            | Very High        | Very High             |
+| 3        | Low            | Moderate         | Slightly Negative     |
+| 4        | Intermediate   | Moderate         | Moderate              |
+| 5        | Low            | High             | Low                   |
 
-To run the data processing script, make sure you have the following Python packages installed:
+- **Evaluation Metrics:**
+  - **Silhouette Score:** 0.589 (good clustering)
+  - **Davies-Bouldin Index:** 0.628 (moderate clustering quality)
+  - **Within-Cluster Sum of Squares (WCSS):** 2,323.54
 
-- `pandas==2.1.0`
-- `openpyxl==3.1.2`
+#### 3. Clustering with 9 Clusters
+- **Cluster Sizes:**
 
-You can install these dependencies using:
+| Cluster | Number of Customers |
+|---------|----------------------|
+| 0       | 2,397                |
+| 1       | 615                  |
+| 2       | 4                    |
+| 3       | 3                    |
+| 4       | 509                  |
+| 5       | 46                   |
+| 6       | 6                    |
+| 7       | 21                   |
+| 8       | 771                  |
 
-```bash
-pip install -r requirements.txt
+- **Summary Statistics:**
+
+| Cluster | Recency_scaled | Frequency_scaled | MonetaryValue_scaled |
+|---------|----------------|------------------|-----------------------|
+| 0       | Moderate       | Moderate         | Moderate              |
+| 1       | Higher         | Moderate         | Moderate              |
+| 2       | Very High      | Very High        | Very High             |
+| 3       | Unique         | Very High        | Very High             |
+| 4       | Intermediate   | Some Variation    | Intermediate          |
+| 5       | Lower          | Lower            | Lower                 |
+| 6       | Moderate       | High             | Moderate              |
+| 7       | High           | Lower            | Moderate              |
+| 8       | Intermediate   | High             | Moderate              |
+
+- **Cluster Centroids:**
+
+| Centroid | Recency_scaled | Frequency_scaled | MonetaryValue_scaled |
+|----------|----------------|------------------|-----------------------|
+| 0        | Low            | Low              | Slightly Negative     |
+| 1        | High           | Low              | Negative              |
+| 2        | Low            | Very High        | High                  |
+| 3        | Low            | Moderate         | Very High             |
+| 4        | Intermediate   | Moderate         | Moderate              |
+| 5        | Low            | High             | Low                   |
+| 6        | Low            | Moderate         | Moderate              |
+| 7        | High           | Lower            | Moderate              |
+| 8        | Low            | High             | Moderate              |
+
+- **Evaluation Metrics:**
+  - **Silhouette Score:** 0.509 (good clustering)
+  - **Davies-Bouldin Index:** 0.672 (moderate clustering quality)
+  - **Within-Cluster Sum of Squares (WCSS):** 1,420.46
+
+## 4. Data Visualization
+### Summary of Each Plot
+
+- **Elbow Method Plot:**
+  - **Description:** Displays the relationship between the number of clusters and the Within-Cluster Sum of Squares (WCSS).
+  - **Purpose:** Helps identify the optimal number of clusters by looking for the "elbow" point where adding more clusters yields a diminishing return in WCSS reduction.
+  - **File:** `elbow_method.png`
+
+- **Recency vs Frequency Scatter Plots:**
+  - **Description:** Shows scatter plots of Recency vs Frequency for 3, 6, and 9 clusters, with points colored by cluster assignment.
+  - **Purpose:** Visualizes how different clusters are distributed in terms of Recency and Frequency.
+  - **File:** `recency_vs_frequency_clusters_comparison.png`
+
+- **Recency vs Monetary Value Scatter Plots:**
+  - **Description:** Shows scatter plots of Recency vs Monetary Value for 3, 6, and 9 clusters, with points colored by cluster assignment.
+  - **Purpose:** Visualizes how different clusters are distributed in terms of Recency and Monetary Value.
+  - **File:** `recency_vs_monetary_value_clusters_comparison.png`
+
+- **Frequency vs Monetary Value Scatter Plots:**
+  - **Description:** Shows scatter plots of Frequency vs Monetary Value for 3, 6, and 9 clusters, with points colored by cluster assignment.
+  - **Purpose:** Visualizes how different clusters are distributed in terms of Frequency and Monetary Value.
+  - **File:** `frequency_vs_monetary_value_clusters_comparison.png`
+
+- **Cluster Sizes Comparison Plot:**
+  - **Description:** Displays the number of customers in each cluster for 3, 6, and 9 clusters.
+  - **Purpose:** Compares the sizes of clusters across different cluster configurations to understand the distribution of data points among clusters.
+  - **File:** `cluster_sizes_comparison.png`
+
+### Recommendations
+- Use the 3-cluster solution for a high-level overview and easier interpretation.
+- For more detailed analysis, consider the 6-cluster solution which provides more granular insights into customer segments.
+- Evaluate additional clustering methods or parameters if necessary to refine the analysis further.
