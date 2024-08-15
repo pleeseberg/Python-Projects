@@ -148,17 +148,17 @@
 - **Recency vs Frequency Scatter Plots:**
   - **Description:** Shows scatter plots of Recency vs Frequency for 3, 6, and 9 clusters, with points colored by cluster assignment.
   - **Purpose:** Visualizes how different clusters are distributed in terms of Recency and Frequency.
-  - <img src="results/Recency_scaled_vs_Frequency_scaled_clusters_comparison.png" alt="Recency vs Frequency" width="500" height="500">
+  - ![Recency vs Frequency](results/Recency_scaled_vs_Frequency_scaled_clusters_comparison.png)
 
 - **Recency vs Monetary Value Scatter Plots:**
   - **Description:** Shows scatter plots of Recency vs Monetary Value for 3, 6, and 9 clusters, with points colored by cluster assignment.
   - **Purpose:** Visualizes how different clusters are distributed in terms of Recency and Monetary Value.
-  - <img src="results/Recency_scaled_vs_MonetaryValue_scaled_clusters_comparison.png" alt="Recency vs Monetary Value" width="500" height="500">
+  - ![Recency vs Monetary Value](results/Recency_scaled_vs_MonetaryValue_scaled_clusters_comparison.png)
 
 - **Frequency vs Monetary Value Scatter Plots:**
   - **Description:** Shows scatter plots of Frequency vs Monetary Value for 3, 6, and 9 clusters, with points colored by cluster assignment.
   - **Purpose:** Visualizes how different clusters are distributed in terms of Frequency and Monetary Value.
-  - <img src="results/Frequency_scaled_vs_MonetaryValue_scaled_clusters_comparison.png" alt="Frequency vs Monetary Value" width="500" height="500">
+  - ![Frequency vs Monetary Value](results/Frequency_scaled_vs_MonetaryValue_scaled_clusters_comparison.png)
 
 - **Cluster Sizes Comparison Plot:**
   - **Description:** Displays the number of customers in each cluster for 3, 6, and 9 clusters.
