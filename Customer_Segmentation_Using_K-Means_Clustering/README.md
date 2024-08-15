@@ -143,27 +143,27 @@
 - **Elbow Method Plot:**
   - **Description:** Displays the relationship between the number of clusters and the Within-Cluster Sum of Squares (WCSS).
   - **Purpose:** Helps identify the optimal number of clusters by looking for the "elbow" point where adding more clusters yields a diminishing return in WCSS reduction.
-  - **File:** `elbow_method.png`
+  - **File:** ![Elbow Method](results/elbow_method.png)
 
 - **Recency vs Frequency Scatter Plots:**
   - **Description:** Shows scatter plots of Recency vs Frequency for 3, 6, and 9 clusters, with points colored by cluster assignment.
   - **Purpose:** Visualizes how different clusters are distributed in terms of Recency and Frequency.
-  - **File:** `recency_vs_frequency_clusters_comparison.png`
+  - **File:** ![Recency vs Frequency](results/Recency_scaled_vs_Frequency_scaled_clusters_comparison.png)
 
 - **Recency vs Monetary Value Scatter Plots:**
   - **Description:** Shows scatter plots of Recency vs Monetary Value for 3, 6, and 9 clusters, with points colored by cluster assignment.
   - **Purpose:** Visualizes how different clusters are distributed in terms of Recency and Monetary Value.
-  - **File:** `recency_vs_monetary_value_clusters_comparison.png`
+  - **File:** ![Recency vs Monetary Value](results/Recency_scaled_vs_MonetaryValue_scaled_clusters_comparison.png)
 
 - **Frequency vs Monetary Value Scatter Plots:**
   - **Description:** Shows scatter plots of Frequency vs Monetary Value for 3, 6, and 9 clusters, with points colored by cluster assignment.
   - **Purpose:** Visualizes how different clusters are distributed in terms of Frequency and Monetary Value.
-  - **File:** `frequency_vs_monetary_value_clusters_comparison.png`
+  - **File:** ![Frequency vs Monetary Value](results/Frequency_scaled_vs_MonetaryValue_scaled_clusters_comparison.png)
 
 - **Cluster Sizes Comparison Plot:**
   - **Description:** Displays the number of customers in each cluster for 3, 6, and 9 clusters.
   - **Purpose:** Compares the sizes of clusters across different cluster configurations to understand the distribution of data points among clusters.
-  - **File:** `cluster_sizes_comparison.png`
+  - **File:** ![Cluster Sizes Comparison](results/cluster_sizes_comparison.png)
 
 ### Recommendations
 - Use the 3-cluster solution for a high-level overview and easier interpretation.
