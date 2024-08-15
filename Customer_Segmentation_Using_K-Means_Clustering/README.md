@@ -143,27 +143,27 @@
 - **Elbow Method Plot:**
   - **Description:** Displays the relationship between the number of clusters and the Within-Cluster Sum of Squares (WCSS).
   - **Purpose:** Helps identify the optimal number of clusters by looking for the "elbow" point where adding more clusters yields a diminishing return in WCSS reduction.
-  - ![Elbow Method](results/elbow_method.png){:width="5in" height="5in"}
+  - <img src="results/elbow_method.png" alt="Elbow Method" width="500" height="500">
 
 - **Recency vs Frequency Scatter Plots:**
   - **Description:** Shows scatter plots of Recency vs Frequency for 3, 6, and 9 clusters, with points colored by cluster assignment.
   - **Purpose:** Visualizes how different clusters are distributed in terms of Recency and Frequency.
-  - ![Recency vs Frequency](results/Recency_scaled_vs_Frequency_scaled_clusters_comparison.png){:width="5in" height="5in"}
+  - <img src="results/Recency_scaled_vs_Frequency_scaled_clusters_comparison.png" alt="Recency vs Frequency" width="500" height="500">
 
 - **Recency vs Monetary Value Scatter Plots:**
   - **Description:** Shows scatter plots of Recency vs Monetary Value for 3, 6, and 9 clusters, with points colored by cluster assignment.
   - **Purpose:** Visualizes how different clusters are distributed in terms of Recency and Monetary Value.
-  - ![Recency vs Monetary Value](results/Recency_scaled_vs_MonetaryValue_scaled_clusters_comparison.png){:width="5in" height="5in"}
+  - <img src="results/Recency_scaled_vs_MonetaryValue_scaled_clusters_comparison.png" alt="Recency vs Monetary Value" width="500" height="500">
 
 - **Frequency vs Monetary Value Scatter Plots:**
   - **Description:** Shows scatter plots of Frequency vs Monetary Value for 3, 6, and 9 clusters, with points colored by cluster assignment.
   - **Purpose:** Visualizes how different clusters are distributed in terms of Frequency and Monetary Value.
-  - ![Frequency vs Monetary Value](results/Frequency_scaled_vs_MonetaryValue_scaled_clusters_comparison.png){:width="5in" height="5in"}
+  - <img src="results/Frequency_scaled_vs_MonetaryValue_scaled_clusters_comparison.png" alt="Frequency vs Monetary Value" width="500" height="500">
 
 - **Cluster Sizes Comparison Plot:**
   - **Description:** Displays the number of customers in each cluster for 3, 6, and 9 clusters.
   - **Purpose:** Compares the sizes of clusters across different cluster configurations to understand the distribution of data points among clusters.
-  - ![Cluster Sizes Comparison](results/cluster_sizes_comparison.png){:width="5in" height="5in"}
+  - <img src="results/cluster_sizes_comparison.png" alt="Cluster Sizes Comparison" width="500" height="500">
 
 ### Recommendations
 - Use the 3-cluster solution for a high-level overview and easier interpretation.
