@@ -47,68 +47,68 @@
   - **ROC AUC:** 0.98
 
 ## 4. Data Visualization
-### Plot Overview:
+### Plot Overview and Discussion:
 
 - **Logistic Regression ROC Curve:**
-  - **Description:** The ROC curve for the Logistic Regression model illustrates its performance in distinguishing between positive and negative classes.
-  - **Purpose:** Evaluates the overall model performance.
-  - ![Logistic Regression ROC Curve](plots/roc_curves.png)
+  - **Description:** The ROC curve for the Logistic Regression model illustrates its performance in distinguishing between positive and negative classes. The curve helps us understand how the model is doing at classifying the data, where the area under the curve (AUC) provides a measure of performance.
+  - **Purpose:** Evaluates how well the model performs in distinguishing between the two classes.
+  - ![Logistic Regression ROC Curve](plots/roc_curves.png){:width="400"}
 
 - **Random Forest ROC Curve:**
-  - **Description:** The ROC curve for the Random Forest model.
-  - **Purpose:** Enables performance comparison with Logistic Regression.
-  - ![Random Forest ROC Curve](plots/roc_curves.png)
+  - **Description:** This ROC curve reflects the performance of the Random Forest model. The higher the curve, the better the model's ability to distinguish between positive and negative classes.
+  - **Purpose:** Compares the Random Forest's performance with Logistic Regression. Given the higher AUC score, we can see that Random Forest is doing better in classifying the data.
+  - ![Random Forest ROC Curve](plots/roc_curves.png){:width="400"}
 
 - **XGBoost ROC Curve:**
-  - **Description:** The ROC curve for the XGBoost model.
-  - **Purpose:** Assesses the ability of XGBoost to separate classes effectively.
-  - ![XGBoost ROC Curve](plots/roc_curves.png)
+  - **Description:** The ROC curve for XGBoost shows the model's ability to separate the classes. With its impressive performance, the model shows a strong ability to predict recommendations correctly.
+  - **Purpose:** Similar to the other curves, it demonstrates XGBoost's performance, which is comparable to Random Forest.
+  - ![XGBoost ROC Curve](plots/roc_curves.png){:width="400"}
 
 - **SHAP Summary Plot:**
-  - **Description:** The SHAP summary plot shows the contribution of each feature to the model's predictions.
-  - **Purpose:** Provides valuable insights into the model’s decision-making process.
-  - ![SHAP Summary Plot](plots/shap_summary_plot.png)
+  - **Description:** This plot summarizes feature importance based on SHAP (SHapley Additive exPlanations) values. Each feature's importance is shown, which helps us interpret the model’s decisions and understand which features are most influential.
+  - **Purpose:** It’s critical for understanding the factors that drive the predictions, like how customer service or product features might be affecting the likelihood of recommendation.
+  - ![SHAP Summary Plot](plots/shap_summary_plot.png){:width="400"}
 
 - **Feature Correlation Heatmap:**
-  - **Description:** The heatmap displays the correlation between features in the dataset.
-  - **Purpose:** Helps identify strong feature relationships that may impact model performance.
-  - ![Feature Correlation Heatmap](plots/correlation_heatmap.png)
+  - **Description:** This heatmap displays the correlation between different features in the dataset. Strong correlations between features are visible here, which might indicate that certain features are linked in terms of customer satisfaction.
+  - **Purpose:** This helps identify any relationships between features that could explain why customers recommend or don’t recommend a product.
+  - ![Feature Correlation Heatmap](plots/correlation_heatmap.png){:width="400"}
 
 - **Sentiment Analysis Boxplots:**
-  - **Description:** Boxplots display sentiment scores from `pros_text` and `cons_text`, segmented by recommendation status.
-  - **Purpose:** Analyzes how customer sentiment influences their likelihood to recommend the product.
-  - ![Pros Sentiment Boxplot](plots/pros_sentiment_boxplot.png)
-  - ![Cons Sentiment Boxplot](plots/cons_sentiment_boxplot.png)
+  - **Description:** These boxplots show sentiment analysis for both `pros_text` and `cons_text`, broken down by whether the customer recommended the product. Positive and negative sentiments are displayed for customers who are likely to recommend vs. those who are not.
+  - **Purpose:** These visualizations help us understand how sentiment influences the decision to recommend a product. It shows that more positive feedback (pros) correlates with a higher likelihood to recommend.
+  - ![Pros Sentiment Boxplot](plots/pros_sentiment_boxplot.png){:width="400"}
+  - ![Cons Sentiment Boxplot](plots/cons_sentiment_boxplot.png){:width="400"}
 
 - **Feature Importance Plot for Random Forest:**
-  - **Description:** This plot visualizes the relative importance of each feature in the Random Forest model.
-  - **Purpose:** Highlights which features are most influential in prediction.
-  - ![Random Forest Feature Importance](plots/random_forest_feature_importance.png)
+  - **Description:** This plot shows the relative importance of each feature as determined by the Random Forest model. Features that are more important in predicting whether a customer recommends the product will appear higher in the plot.
+  - **Purpose:** It helps to visualize which features the Random Forest model depends on most. For instance, customer service and product ease of use might rank high.
+  - ![Random Forest Feature Importance](plots/random_forest_feature_importance.png){:width="400"}
 
 - **Feature Importance Plot for XGBoost:**
-  - **Description:** This plot shows the feature importance for the XGBoost model.
-  - **Purpose:** Identifies the most critical features for the model's predictions.
-  - ![XGBoost Feature Importance](plots/xgboost_feature_importance.png)
+  - **Description:** Like the Random Forest plot, this one visualizes feature importance for the XGBoost model. It highlights which features contribute most to the prediction.
+  - **Purpose:** Identifies the features that matter the most for XGBoost, offering another layer of understanding in model interpretability.
+  - ![XGBoost Feature Importance](plots/xgboost_feature_importance.png){:width="400"}
 
 - **Confusion Matrix for XGBoost:**
-  - **Description:** The confusion matrix for the XGBoost model, showing true positives, true negatives, false positives, and false negatives.
-  - **Purpose:** Assesses the accuracy of the model's predictions.
-  - ![Confusion Matrix](plots/confusion_matrix_xgb.png)
+  - **Description:** The confusion matrix shows how well the XGBoost model classifies the data, presenting true positives, false positives, true negatives, and false negatives.
+  - **Purpose:** This helps evaluate the accuracy and reliability of the XGBoost model in predicting customer recommendations.
+  - ![Confusion Matrix](plots/confusion_matrix_xgb.png){:width="400"}
 
 ## 5. Conclusion
-The **Customer Support Flow Analysis** project applied several machine learning techniques to predict the likelihood of customers recommending a product based on their feedback. We leveraged **Logistic Regression**, **Random Forest**, and **XGBoost** classifiers, achieving strong results with **ROC AUC scores above 0.84**.
+The **Customer Support Flow Analysis** project applies machine learning models like **Logistic Regression**, **Random Forest**, and **XGBoost** to predict customer recommendations. The results show that **Random Forest** and **XGBoost** perform exceptionally well, with **ROC AUC scores above 0.97**, while **Logistic Regression** provides a more interpretable yet simpler model.
 
-- **Logistic Regression** offers a simple, interpretable model with adequate performance.
-- **Random Forest** and **XGBoost** are more complex, providing higher performance and **ROC AUC scores above 0.97**.
+- **Logistic Regression** offers a basic, interpretable approach with decent performance.
+- **Random Forest** and **XGBoost** provide more advanced, accurate models with higher performance, especially in terms of ROC AUC scores.
 
-The analysis also utilized **SHAP values** to interpret model predictions, offering insights into the most important features. Visualizations, including **ROC curves** and **feature importance plots**, further enhanced understanding of model decisions.
+By using **SHAP values**, we gained deeper insights into which features influence the predictions, and visualizations like **ROC curves** and **feature importance plots** further aided model interpretation.
 
 ### Key Insights:
-- **Model Performance:** Random Forest and XGBoost demonstrated excellent performance.
-- **Feature Importance:** SHAP values helped identify key predictors in the models.
-- **Sentiment Analysis:** Revealed how sentiment influences customer recommendations.
+- **Model Performance:** Random Forest and XGBoost demonstrated superior classification capabilities.
+- **Feature Importance:** SHAP values helped us understand the critical features affecting recommendations.
+- **Sentiment Analysis:** Revealed how sentiment in customer feedback affects the likelihood to recommend a product.
 
-For future work, **social network analysis** and **process mining** can deepen insights into support workflows and agent interactions during ticket resolution.
+Future work could explore **social network analysis** and **process mining** to better understand ticket resolution workflows and agent dynamics.
 
 ## 6. Future Enhancements
 - **Process Mining:** Discover ticket resolution workflows and pinpoint inefficiencies.
