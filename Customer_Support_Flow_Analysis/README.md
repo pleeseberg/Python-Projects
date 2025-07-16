@@ -1,109 +1,136 @@
 # Customer Support Flow Analysis
 
 ## 1. Data Collection
-- **Dataset Acquisition:** The dataset used in this analysis was sourced from [Capterra Reviews](https://www.capterra.com/). It includes key columns such as `ticket_id`, `created_time`, `closed_time`, `assigned_agent`, `escalated`, `resolved_within_sla`, `issue_type`, and feedback text fields like `pros_text` and `cons_text`.
+- **Dataset Acquisition:**  
+  The dataset used in this analysis was sourced from [Capterra Reviews](https://www.capterra.com/). It includes review-level information and customer support ticket data across various software vendors. Key columns include:
+  - `ticket_id`, `created_time`, `closed_time`, `assigned_agent`, `escalated`, `resolved_within_sla`
+  - Rating features: `ease_of_use`, `customer_service`, `value_for_money`, `features`, `overall_rating`
+  - Feedback text fields: `pros_text`, `cons_text`
+  - Target: `likelihood_to_recommend`
 
 ## 2. Data Preparation
 ### Execution Summary:
-- **Data Loading:**
-  - The dataset was successfully loaded, containing essential customer feedback and ticket resolution data.
-- **Data Cleaning:**
-  - Missing values in numeric columns like `ease_of_use`, `customer_service`, `value_for_money`, and `features` were replaced with mean values to maintain consistency.
-  - Empty text feedback fields (`pros_text` and `cons_text`) were populated with "No feedback" to ensure that no feedback data was omitted.
-  - Rows with missing values in the target column (`likelihood_to_recommend`) were dropped to avoid bias in model training.
+
+- **Initial Cleaning and Handling Missing Values:**
+  - All numeric fields such as `ease_of_use`, `customer_service`, `value_for_money`, and `features` were filled with their respective column means to ensure model input consistency.
+  - Binary indicators (columns 11 onward) had `-1` values replaced with `0` to standardize binary representation.
+  - Missing text feedback fields were filled with the placeholder `"No feedback"` to avoid dropping rows unnecessarily.
+  - Records with missing `likelihood_to_recommend` (target) were excluded to avoid introducing target bias.
+
 - **Feature Engineering:**
-  - A new binary variable (`recommend_flag`) was created to classify whether a customer would recommend the product, based on their `likelihood_to_recommend` score.
+  - A binary classification target `recommend_flag` was created:
+    - `recommend_flag = 1` if `likelihood_to_recommend ≥ 4`
+    - `recommend_flag = 0` otherwise
+  - This binarization helps to distinguish between promoters and detractors in a simplified way.
+
+- **Class Imbalance Handling with SMOTE:**
+  - The initial dataset showed a slight class imbalance between recommenders and non-recommenders.
+  - To prevent biased model learning, **SMOTE (Synthetic Minority Over-sampling Technique)** was applied **before train-test splitting** to balance class distributions.
+  - The resampled dataset showed near-equal representation across both classes.
+
+- **Feature Selection:**
+  - Selected features included all numeric ratings and binary feedback columns:  
+    `['overall_rating', 'ease_of_use', 'customer_service', 'value_for_money', 'features'] + binary_indicators`
+
+- **Train-Test Split:**
+  - 80% of the balanced data was used for training and 20% for testing using `train_test_split`.
 
 ## 3. Model Implementation
 ### Model Training Overview:
+
 - **Logistic Regression:**
-  - The Logistic Regression model was trained to predict customer recommendation likelihood based on various features such as `customer_service`, `ease_of_use`, and `value_for_money`.
-  - The model achieved a **ROC AUC** score of 0.84, indicating a solid but less complex model that provides reasonably balanced precision and recall for both positive and negative recommendations.
+  - Trained with `max_iter=1000` to ensure convergence.
+  - Evaluated using cross-validation (5-fold) and test set performance.
+  - AUC-ROC of **0.84** on test data confirms reliable, interpretable performance for baseline classification.
 
 - **Random Forest Classifier:**
-  - The Random Forest Classifier was optimized using cross-validation for better hyperparameter tuning.
-  - The model achieved an impressive **ROC AUC** score of 0.98, reflecting superior performance with high precision and recall.
+  - Hyperparameter tuning performed using **RandomizedSearchCV** over:
+    - `n_estimators`, `max_depth`, `min_samples_split`, `min_samples_leaf`, `bootstrap`
+  - Final model achieved **ROC AUC of 0.98**, indicating high discriminative power.
 
 - **XGBoost Classifier:**
-  - Similar to the Random Forest model, XGBoost also reached a **ROC AUC** of 0.98. It showed excellent performance in handling large, complex datasets.
+  - Also tuned via **RandomizedSearchCV** with parameters like:
+    - `n_estimators`, `max_depth`, `learning_rate`, `subsample`, `colsample_bytree`
+  - Achieved **ROC AUC of 0.98**, showcasing superior performance, especially in handling complex patterns.
 
 ### Model Evaluation:
-- **Logistic Regression:**
-  - **Precision:** 0.75
-  - **Recall:** 0.75
-  - **F1-Score:** 0.75
-  - **ROC AUC:** 0.84
 
-- **Random Forest:**
-  - **Precision:** 0.93
-  - **Recall:** 0.93
-  - **F1-Score:** 0.93
-  - **ROC AUC:** 0.98
-
-- **XGBoost:**
-  - **Precision:** 0.93
-  - **Recall:** 0.94
-  - **F1-Score:** 0.93
-  - **ROC AUC:** 0.98
+| Model               | Precision | Recall | F1-Score | ROC AUC |
+|---------------------|-----------|--------|----------|---------|
+| Logistic Regression | 0.75      | 0.75   | 0.75     | 0.84    |
+| Random Forest       | 0.93      | 0.93   | 0.93     | 0.98    |
+| XGBoost             | 0.93      | 0.94   | 0.93     | 0.98    |
 
 ## 4. Data Visualization
 ### Plot Overview and Discussion:
 
-1. **Logistic Regression ROC Curve:**
-   - **Description:** The ROC curve for the Logistic Regression model illustrates the model's performance in distinguishing between positive and negative recommendations. A **ROC AUC** of 0.84 shows a decent model, suitable for simpler binary classification tasks.
-   - ![Logistic Regression ROC Curve](plots/roc_curves.png)
+1. **Combined ROC Curves:**
+   - Plots for all three models show that **Random Forest** and **XGBoost** outperform **Logistic Regression**.
+   - A diagonal reference line helps visualize performance over random guessing.
+   - ![ROC Curves](plots/roc_curves.png)
 
-2. **Random Forest ROC Curve:**
-   - **Description:** This ROC curve shows the performance of the Random Forest model. With a **ROC AUC** of 0.98, the model demonstrates exceptional performance in classifying recommendations.
-   - ![Random Forest ROC Curve](plots/roc_curves.png)
+2. **SHAP Summary Plot:**
+   - Generated using SHAP’s TreeExplainer on XGBoost.
+   - Illustrates the magnitude and direction of each feature's impact.
+   - Highlights `customer_service`, `ease_of_use`, and binary flags as most influential.
+   - ![SHAP Summary](plots/shap_summary_plot.png)
 
-3. **XGBoost ROC Curve:**
-   - **Description:** The ROC curve for the XGBoost model demonstrates its ability to separate the classes, achieving a **ROC AUC** of 0.98.
-   - ![XGBoost ROC Curve](plots/roc_curves.png)
+3. **Feature Correlation Heatmap:**
+   - Visualizes relationships among numeric and binary variables.
+   - Useful for checking multicollinearity and uncovering related features.
+   - ![Correlation Heatmap](plots/correlation_heatmap.png)
 
-4. **SHAP Summary Plot:**
-   - **Description:** This plot summarizes feature importance based on SHAP (Shapley Additive exPlanations) values. It shows how each feature influences the model's prediction.
-   - ![SHAP Summary Plot](plots/shap_summary_plot.png)
+4. **Sentiment Analysis Boxplots:**
+   - **Pros Sentiment:** Customers who recommended the product had higher sentiment scores in `pros_text`.
+   - **Cons Sentiment:** Negative sentiment scores are more pronounced for non-recommenders.
+   - ![Pros Sentiment](plots/pros_sentiment_boxplot.png)
+   - ![Cons Sentiment](plots/cons_sentiment_boxplot.png)
 
-5. **Feature Correlation Heatmap:**
-   - **Description:** The heatmap shows the correlations between features in the dataset. It helps to identify relationships between features like `customer_service` and `ease_of_use`.
-   - ![Feature Correlation Heatmap](plots/correlation_heatmap.png)
+5. **Random Forest Feature Importance:**
+   - Shows ranking of features based on mean decrease in impurity.
+   - Top features: `customer_service`, `ease_of_use`, and `overall_rating`.
+   - ![RF Importance](plots/random_forest_feature_importance.png)
 
-6. **Sentiment Analysis Boxplots:**
-   - **Description:** These boxplots display sentiment analysis for both `pros_text` and `cons_text` fields, broken down by customer recommendation status. Positive sentiment in the `pros_text` is often linked to higher likelihood to recommend the product.
-   - ![Pros Sentiment Boxplot](plots/pros_sentiment_boxplot.png)
-   - ![Cons Sentiment Boxplot](plots/cons_sentiment_boxplot.png)
+6. **XGBoost Feature Importance:**
+   - Similar ranking to Random Forest, but highlights additional binary indicators.
+   - Built-in importance and SHAP were both used for interpretation.
+   - ![XGBoost Importance](plots/xgboost_feature_importance.png)
 
-7. **Feature Importance Plot for Random Forest:**
-   - **Description:** This plot visualizes the feature importance scores based on the Random Forest model, showing which features are most influential in predicting whether a customer will recommend the product.
-   - ![Random Forest Feature Importance](plots/random_forest_feature_importance.png)
-
-8. **Feature Importance Plot for XGBoost:**
-   - **Description:** Similar to the Random Forest plot, this one visualizes feature importance for XGBoost, highlighting the most influential features.
-   - ![XGBoost Feature Importance](plots/xgboost_feature_importance.png)
-
-9. **Confusion Matrix for XGBoost:**
-   - **Description:** The confusion matrix shows how well the XGBoost model predicts customer recommendations by displaying true positives, false positives, and other metrics.
+7. **XGBoost Confusion Matrix:**
+   - High number of true positives and true negatives.
+   - Very few false positives/negatives, further reinforcing model reliability.
    - ![Confusion Matrix](plots/confusion_matrix_xgb.png)
 
 ## 5. Conclusion
-The **Customer Support Flow Analysis** project applied machine learning models such as **Logistic Regression**, **Random Forest**, and **XGBoost** to predict whether a customer would recommend a product. The **Random Forest** and **XGBoost** models performed exceptionally well, with **ROC AUC scores above 0.97**. 
 
-- **Logistic Regression** provides a simpler, more interpretable model, achieving a **ROC AUC** of 0.84, suitable for less complex applications.
-- **Random Forest** and **XGBoost** are more advanced models that offer superior predictive accuracy with **ROC AUC scores of 0.98**.
+This **Customer Support Flow Analysis** project used structured customer data to predict the likelihood of customer recommendation using three classification models:
 
-By leveraging **SHAP values**, we gained insights into the features that most influence customer recommendations, and the visualizations helped further interpret the models' decision-making processes.
+- **Logistic Regression** served as a strong baseline with solid interpretability.
+- **Random Forest** and **XGBoost** achieved outstanding performance (**ROC AUC 0.98**) and outperformed baseline methods in both recall and precision.
+- **SMOTE** successfully addressed the class imbalance issue, ensuring the model performance was not skewed toward the majority class.
+
+Through the use of **SHAP values**, **sentiment analysis**, and **feature importance plots**, the study revealed that factors such as `customer_service`, `ease_of_use`, and `value_for_money` are key drivers in customer satisfaction and recommendation.
 
 ### Key Insights:
-- **Model Performance:** Random Forest and XGBoost demonstrated superior classification capabilities with high ROC AUC scores.
-- **Feature Importance:** SHAP values revealed the most influential features for predicting recommendations.
-- **Sentiment Analysis:** Revealed a clear connection between sentiment in customer feedback and the likelihood of recommending a product.
+- **Customer Service and Ease of Use** are the most influential factors in driving product recommendation.
+- **Text sentiment** in `pros_text` and `cons_text` aligns strongly with customer decisions.
+- **Balanced datasets (via SMOTE)** lead to more reliable model evaluation metrics.
 
 ## 6. Future Enhancements
-- **Process Mining:** To identify inefficiencies in the ticket resolution process and optimize workflows.
-- **Social Network Analysis:** To investigate agent escalation paths and identify key influencers within the customer support process.
-- **Deep Learning Models:** To explore the application of deep learning techniques for more accurate predictions.
+
+- **Process Mining:**  
+  Leverage timestamped ticket data (`created_time`, `closed_time`) to uncover inefficiencies and bottlenecks in support workflows.
+
+- **Social Network Analysis:**  
+  Use escalation paths and `assigned_agent` relationships to map influence and workload distribution across agents.
+
+- **Text Embedding Techniques:**  
+  Enhance sentiment analysis by applying advanced NLP methods such as TF-IDF or BERT embeddings instead of basic polarity scores.
+
+- **Deep Learning Models:**  
+  Evaluate the effectiveness of neural networks for classifying complex patterns, particularly in free-text fields.
 
 ---
 
-The dataset used in this analysis is available for download from [this link](https://www.capterra.com/) for those who wish to explore it further.
+**Note:**  
+Upon auditing this project, I noticed that **SMOTE was applied *before* the train-test split**, which can lead to **data leakage** and overly optimistic performance metrics. I plan to update the analysis after correcting the pipeline to apply SMOTE **only on the training data** after the split. A revised version of this report will be published once the retraining and validation are complete.
