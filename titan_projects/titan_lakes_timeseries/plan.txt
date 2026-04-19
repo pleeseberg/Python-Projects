@@ -1,0 +1,96 @@
+================================================================================
+PROJECT 1: Seasonal Variability of Titan's Northern Lakes
+A Time Series Analysis of Cassini RADAR Data
+================================================================================
+Author: Paige Leeseberg
+Status: Planning
+Target Timeline: Weeks 1-6
+--------------------------------------------------------------------------------
+ 
+SCIENTIFIC QUESTION
+--------------------------------------------------------------------------------
+How have the surface areas of Titan's northern hydrocarbon lakes changed
+over the Cassini mission lifetime (2004-2017), and can we detect seasonal
+variability consistent with Titan's ~29 year seasonal cycle?
+ 
+WHY THIS MATTERS
+--------------------------------------------------------------------------------
+Titan's methane/ethane lakes are unique in the solar system. Understanding
+their seasonal behavior helps constrain Titan's methane cycle and informs
+predictions for what NASA's Dragonfly mission (launching 2030s) will find
+when it arrives. Any time series analysis of lake variability is directly
+relevant to Dragonfly mission planning.
+ 
+TARGET LAKES
+--------------------------------------------------------------------------------
+- Ligeia Mare (second largest, well observed)
+- Kraken Mare (largest, polar)
+- Punga Mare (smaller, good temporal coverage)
+ 
+DATA SOURCE
+--------------------------------------------------------------------------------
+- NASA Planetary Data System (pds.nasa.gov)
+- Instrument: Cassini RADAR in SAR (Synthetic Aperture Radar) imaging mode
+- Node: PDS Atmospheres Node (pds-atmospheres.nmsu.edu)
+- Time coverage: 2004-2017 (full Cassini mission)
+- Access: Free, no account required
+ 
+METHODS
+--------------------------------------------------------------------------------
+1. Data acquisition and preprocessing
+   - Download Cassini RADAR SAR images from PDS
+   - Convert PDS format to workable arrays using astropy/pds4tools
+   - Compile published lake surface area measurements from literature
+ 
+2. Exploratory data analysis
+   - Plot lake surface area vs time for each target
+   - Identify gaps in temporal coverage
+   - Look for obvious trends or seasonal signals
+ 
+3. Time series analysis
+   - STL decomposition (seasonal + trend + residual)
+   - ARIMA modeling for trend characterization
+   - Lomb-Scargle periodogram for unevenly spaced observations
+ 
+4. Forecasting
+   - Project lake behavior forward to Dragonfly arrival epoch
+   - Quantify uncertainty on forecasts
+   - Compare to published climate model predictions
+ 
+5. Interpretation
+   - Connect findings to Titan's known seasonal cycle
+   - Discuss implications for methane replenishment models
+   - Frame predictions for Dragonfly observations
+ 
+PYTHON LIBRARIES NEEDED
+--------------------------------------------------------------------------------
+- astropy (FITS/data handling)
+- pds4tools (PDS format reading)
+- numpy, scipy, pandas
+- matplotlib, seaborn
+- statsmodels (ARIMA, STL decomposition)
+- astropy.timeseries (Lomb-Scargle)
+ 
+DELIVERABLES
+--------------------------------------------------------------------------------
+- Clean Jupyter notebook with full analysis and inline documentation
+- README framing the scientific question and key findings
+- At least 3 publication-quality figures
+- GitHub repo folder: titan-lakes-timeseries/
+ 
+STRETCH GOAL
+--------------------------------------------------------------------------------
+Write up as a short research note suitable for arXiv preprint submission.
+ 
+KEY REFERENCES TO READ FIRST
+--------------------------------------------------------------------------------
+- Turtle et al. 2011 (Cassini RADAR lake observations)
+- Aharonson et al. 2009 (Titan lake seasonal model)
+- Hayes et al. 2011 (Titan northern lake morphology)
+- MacKenzie et al. 2019 (Dragonfly landing site considerations)
+ 
+NOTES
+--------------------------------------------------------------------------------
+ 
+ 
+================================================================================
