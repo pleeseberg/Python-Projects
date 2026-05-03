@@ -51,6 +51,14 @@ Original abstract drafted: 2023 (see project folder for reference copy)
 
 <!-- JOURNAL_START — do not remove this line, the git hook appends below it -->
 
+### 2026-05-02 20:48 — Auto Log (commit: 2a991a0)
+**Commit message:** "capstone: lab journal — key insights on leakage, ICULOS, and metrics"
+**Files changed:**
+  - titan_projects/titan_c4h3n_search/JOURNAL.md
+**Next steps:** *(fill this in manually if needed)*
+
+---
+
 ### 2026-05-02 20:38 — Auto Log (commit: 882c41b)
 **Commit message:** Initial repo setup for capstone 5.2.26
 **Files changed:**

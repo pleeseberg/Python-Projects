@@ -1,0 +1,28 @@
+# Core data handling
+pandas
+numpy
+
+# Visualisation
+matplotlib
+seaborn
+
+# Machine learning
+scikit-learn
+
+# Deep learning
+torch
+
+# Interpretability
+shap
+
+# Notebook
+jupyter
+
+# File format for splits
+pyarrow
+
+# Progress bars (helpful with 40k files)
+tqdm
+
+# Testing
+pytest
