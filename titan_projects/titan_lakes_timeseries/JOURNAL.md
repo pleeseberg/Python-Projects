@@ -38,6 +38,16 @@ Newest entries are at the bottom. Do not edit past entries — add new ones only
 
 <!-- JOURNAL_START — do not remove this line, the git hook appends below it -->
 
+### 2026-04-19 13:58 — Auto Log (commit: 337d7ed)
+**Commit message:** updated to new structure 4/19/26
+**Files changed:**
+  - titan_projects/titan_lakes_timeseries/JOURNAL.md
+  - titan_projects/titan_lakes_timeseries/README.md
+  - titan_projects/titan_lakes_timeseries/plan.txt
+**Next steps:** *(fill this in manually if needed)*
+
+---
+
 ### 2026-04-19 13:57 — Auto Log (commit: 179e595)
 **Commit message:** feat: set up Project 1 virtual environment and dependencies
 **Files changed:**

@@ -1,2 +1,24 @@
-.DS_Store
+# Capstone raw data - never commit patient files
+capstone_project/data/raw/
 
+# Processed data - too large for git
+capstone_project/data/processed/
+capstone_project/data/splits/
+
+# Model outputs
+capstone_project/outputs/models/
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+.venv/
+data/raw/
+data/processed/
+data/external/
+*.fits
+*.FITS
+__pycache__/
+.ipynb_checkpoints/
+*.pyc

@@ -1,0 +1,119 @@
+================================================================================
+PROJECT 2: Searching for C4H3N Isomers in Titan's Atmosphere
+An Independent Analysis of ALMA Archival Data
+================================================================================
+Author: Paige Leeseberg
+Status: Planning
+Target Timeline: Months 2-4
+--------------------------------------------------------------------------------
+ 
+SCIENTIFIC QUESTION
+--------------------------------------------------------------------------------
+Can propargyl cyanide (HCCCH2CN) and cyanoallene (H2CCCHCN) be detected
+in Titan's atmosphere using publicly available ALMA archival data? If not,
+what are the upper limits on their abundances, and how do these constrain
+existing photochemical models?
+ 
+WHY THIS MATTERS
+--------------------------------------------------------------------------------
+This project directly continues research begun at NASA Goddard Space Flight
+Center. Methyl cyanoacetylene (CH3C3N) was confirmed on Titan in 2020
+(Thelen et al.), making the other C4H3N structural isomers compelling
+targets. These molecules have been detected in the interstellar medium,
+and their presence or absence on Titan constrains the nitrogen and carbon
+photochemistry that produces Titan's complex organic haze. This work picks
+up where funding cuts left off.
+ 
+TARGET MOLECULES
+--------------------------------------------------------------------------------
+- Propargyl cyanide: HCCCH2CN
+- Cyanoallene: H2CCCHCN
+- Reference detected molecule: CH3C3N (Thelen et al. 2020, ApJL 903 L22)
+ 
+DATA SOURCE
+--------------------------------------------------------------------------------
+- ALMA Science Archive (almascience.eso.org)
+- Band 6: ~230-272 GHz
+- Band 7: ~273-373 GHz
+- Observations: 2014-2016 Titan datasets (now fully public)
+- Access: Free account required, no cost to download
+- Format: FITS data cubes, may require CASA calibration
+ 
+METHODS
+--------------------------------------------------------------------------------
+1. Data acquisition
+   - Create ALMA archive account
+   - Search for Titan observations in Band 6 and Band 7
+   - Download calibrated data products where available
+   - Install CASA for any recalibration needed
+ 
+2. Spectral line identification
+   - Pull molecular line frequencies from HITRAN and CDMS databases
+   - Identify target frequency windows for each molecule
+   - Extract spectra at Titan disk position
+ 
+3. Signal search and upper limit calculation
+   - Search for spectral line signatures at known frequencies
+   - For non-detections: calculate 3-sigma upper limits
+   - Apply beam dilution corrections
+   - Account for Titan's limb vs disk geometry
+ 
+4. Photochemical model comparison
+   - Pull predicted abundances from Lavvas et al. and Vuitton et al. models
+   - Compare upper limits to model predictions
+   - Assess whether models are consistent with non-detections
+ 
+5. Interpretation
+   - Discuss chemistry implications
+   - Identify which photochemical pathways are constrained
+   - Suggest future observational follow-up
+ 
+PYTHON LIBRARIES NEEDED
+--------------------------------------------------------------------------------
+- astropy (FITS handling, units, coordinates)
+- specutils (spectral analysis and line fitting)
+- spectral-cube (ALMA data cube handling)
+- radio-beam (beam correction)
+- astroquery (archive access)
+- numpy, scipy, matplotlib
+- CASA (standalone, for data calibration if needed)
+ 
+MOLECULAR LINE DATABASES
+--------------------------------------------------------------------------------
+- HITRAN: hitran.org (molecular absorption parameters)
+- CDMS: cdms.astro.uni-koeln.de (cologne database, excellent for mm-wave)
+- Splatalogue: splatalogue.net (radio astronomy line catalog)
+ 
+DELIVERABLES
+--------------------------------------------------------------------------------
+- Jupyter notebook documenting full spectral analysis pipeline
+- Upper limit calculations with uncertainty quantification
+- Comparison figure: upper limits vs photochemical model predictions
+- README with full scientific context
+- GitHub repo folder: titan-c4h3n-search/
+ 
+STRETCH GOAL
+--------------------------------------------------------------------------------
+Preprint submission to arXiv astro-ph.EP. This analysis is sufficiently
+novel and self-contained to be publishable as a research note.
+ 
+KEY REFERENCES TO READ FIRST
+--------------------------------------------------------------------------------
+- Thelen et al. 2020, ApJL 903 L22 (CH3C3N detection - your starting point)
+- Lovas et al. 2006, ApJL 637 L37 (ISM detection context)
+- Lavvas et al. 2008 (Titan photochemical model)
+- Vuitton et al. 2019 (Titan atmospheric chemistry review)
+- Cordiner et al. 2015 (ALMA Titan methodology reference)
+ 
+PERSONAL NOTE
+--------------------------------------------------------------------------------
+This work began during the NASA Goddard internship (2022-2023) and was
+interrupted by funding cuts. The abstract drafted at that time serves as
+the foundation for this independent continuation. The ALMA data used in
+the original study is now fully public and available for reanalysis.
+ 
+NOTES
+--------------------------------------------------------------------------------
+ 
+ 
+================================================================================

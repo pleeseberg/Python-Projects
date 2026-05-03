@@ -1,0 +1,121 @@
+================================================================================
+PROJECT 3: Monte Carlo Uncertainty Quantification in Titan Photochemical Models
+================================================================================
+Author: Paige Leeseberg
+Status: Planning
+Target Timeline: Months 4-6
+--------------------------------------------------------------------------------
+ 
+SCIENTIFIC QUESTION
+--------------------------------------------------------------------------------
+How do uncertainties in photochemical reaction rate inputs propagate through
+to predicted molecular abundances in Titan's atmosphere? Which reactions
+contribute most to output uncertainty, and are current model predictions
+actually consistent with observational upper limits given those uncertainties?
+ 
+WHY THIS MATTERS
+--------------------------------------------------------------------------------
+Titan's photochemical models (Lavvas, Vuitton, and others) are widely used
+to interpret observations and guide molecular searches. However, the reaction
+rates input to these models carry significant laboratory measurement
+uncertainties that are rarely propagated through to the final abundance
+predictions. This means we may be over- or under-confident in what molecules
+should be detectable. A rigorous uncertainty quantification (UQ) analysis
+using Monte Carlo methods is a genuine methodological gap in the literature
+and a direct application of data science to planetary science.
+
+This project also directly connects to Project 2 — the upper limits from
+the C4H3N search can be used as observational constraints to validate the
+uncertainty-propagated model outputs.
+ 
+APPROACH
+--------------------------------------------------------------------------------
+Rather than running a full photochemical model from scratch (which requires
+atmospheric physics code), this project works with published model outputs
+and their documented input reaction rates. We sample across the uncertainty
+distributions of key reaction rates and propagate those samples through
+simplified model relationships to generate posterior distributions on
+predicted molecular abundances.
+ 
+METHODS
+--------------------------------------------------------------------------------
+1. Literature survey of reaction rate uncertainties
+   - Extract key reaction rates from Lavvas et al. 2008 model
+   - Document reported uncertainty ranges for each rate
+   - Identify the ~20-30 most important reactions for C4H3N chemistry
+ 
+2. Build Monte Carlo uncertainty propagation framework
+   - Define prior distributions for each reaction rate input
+   - Sample using Latin Hypercube Sampling (more efficient than random)
+   - Propagate samples through model abundance relationships
+   - Generate posterior distributions on predicted abundances
+ 
+3. Sensitivity analysis
+   - Use SALib for Sobol sensitivity indices
+   - Identify which reaction rates drive the most output uncertainty
+   - Rank reactions by their contribution to abundance uncertainty
+ 
+4. Observational constraint comparison
+   - Compare Monte Carlo output distributions to ALMA upper limits
+   - Assess model-observation consistency under uncertainty
+   - Identify molecules where observations meaningfully constrain models
+ 
+5. Visualization and reporting
+   - Corner plots of parameter posteriors (corner library)
+   - Sensitivity ranking plots
+   - Model vs observation comparison with uncertainty bands
+ 
+GPU ACCELERATION (Your AMD GPU)
+--------------------------------------------------------------------------------
+Monte Carlo runs with large sample sizes benefit significantly from
+parallelization. Your AMD Radeon 16GB card can accelerate this via ROCm:
+- Install ROCm for Windows (or WSL2 recommended for better support)
+- Use PyTorch with ROCm backend for parallelized sampling
+- Target: 100,000+ Monte Carlo samples feasible on your hardware
+- Fallback: CPU-based runs with smaller sample sizes still valid
+ 
+PYTHON LIBRARIES NEEDED
+--------------------------------------------------------------------------------
+- numpy, scipy, pandas
+- SALib (sensitivity analysis, Sobol indices)
+- emcee (MCMC sampling if Bayesian approach used)
+- corner (posterior visualization)
+- matplotlib, seaborn
+- PyTorch + ROCm (GPU acceleration)
+- uncertainties (error propagation validation)
+ 
+DELIVERABLES
+--------------------------------------------------------------------------------
+- Modular Python codebase (not just a notebook - this is reusable science)
+- Jupyter notebook demonstrating the full analysis with visualizations
+- Sensitivity analysis report identifying key uncertain reactions
+- Comparison of model predictions vs observational upper limits from Project 2
+- README with full methodology documentation
+- GitHub repo folder: titan-photochem-uncertainty/
+ 
+STRETCH GOAL
+--------------------------------------------------------------------------------
+This is the most novel of the three projects and the most likely to result
+in a standalone publication. Target journal: Icarus or The Astrophysical
+Journal. A well-executed UQ analysis of this kind would be of genuine
+interest to the Titan atmospheric chemistry community.
+ 
+CONNECTION TO OTHER PROJECTS
+--------------------------------------------------------------------------------
+- Uses upper limits from Project 2 as observational validation data
+- Informed by understanding of Titan chemistry built in Projects 1 and 2
+- Do this project third — it requires the most domain context to execute well
+ 
+KEY REFERENCES TO READ FIRST
+--------------------------------------------------------------------------------
+- Lavvas et al. 2008, Planet. Space Sci. (the model you're analyzing)
+- Vuitton et al. 2019 (comprehensive chemistry review)
+- Hebrard et al. 2009 (uncertainty in hydrocarbon photochemistry - key paper)
+- Saltelli et al. 2010 (sensitivity analysis methods - methodological foundation)
+- Loison et al. 2015 (nitrogen photochemistry uncertainties)
+ 
+NOTES
+--------------------------------------------------------------------------------
+ 
+ 
+================================================================================
