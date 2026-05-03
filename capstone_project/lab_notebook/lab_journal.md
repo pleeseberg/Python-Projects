@@ -269,3 +269,95 @@ Decision needed in Phase 4. Questions to consider:
 - What is the distribution of stay lengths? (EDA will tell us)
 - What is the maximum clinically meaningful prediction window?
 - How much padding is too much — does it hurt training?
+
+
+
+---
+
+## On Static vs Dynamic Features
+
+Dynamic features (HR, Lactate, BP) change every hour — the model watches
+their trajectory over time. Rising lactate or falling BP is a warning signal.
+
+Static features (Age, Gender) stay constant across all rows for a patient.
+They can't provide new information hour by hour but they provide context —
+they help the model interpret dynamic features differently depending on who
+the patient is. A HR of 110 means something different for a 74 year old
+than a 35 year old.
+
+Static features = context
+Dynamic features = signal
+
+Both are needed. Neither replaces the other.
+
+
+
+---
+
+## EDA — Class Imbalance (500 patient sample)
+
+Row-level:     1.59% of rows have SepsisLabel=1
+Patient-level: 6.20% of patients ever develop sepsis (31 of 500)
+
+Row-level is lower because SepsisLabel=1 window is only ~6 hours out of
+a full ICU stay. Positive rows are diluted by pre-onset zeros.
+
+Note: 6.2% patient-level is higher than expected 2% — likely sample
+variation with only 31 sepsis patients. Recheck on full dataset in Phase 2.
+
+Imbalance is harder than it looks: 1 positive row per ~62 negative rows.
+
+
+
+---
+
+## On High-Missingness Lab Values — Clinical Context
+
+The three highest-missing labs (99%+) are not missing randomly.
+They are ordered only in the most serious clinical situations:
+
+**TroponinI (98.9% missing)**
+Cardiac marker — measures heart muscle damage. Ordered when septic
+shock is stressing the heart. Presence = doctor is worried about
+cardiac involvement.
+
+**Fibrinogen (99.4% missing)**
+Clotting factor — ordered when DIC (disseminated intravascular
+coagulation) is suspected. DIC is a late-stage, life-threatening
+complication of severe sepsis.
+
+**Bilirubin_direct (99.8% missing)**
+Liver function marker — ordered when liver failure is suspected.
+Liver failure is one of the organ failures that defines severe sepsis.
+
+Hypothesis: these labs are drawn precisely when something is very wrong.
+When they appear at all, they may be powerful sepsis signals.
+Missingness here is not noise — it is clinical context.
+Testing this before deciding whether to drop them.
+
+
+
+---
+
+## EDA Finding — High-Missingness Labs Are Strong Sepsis Signals
+
+Hypothesis: labs ordered rarely are ordered precisely when something
+is seriously wrong — so their presence alone might predict sepsis.
+
+Tested by comparing sepsis rates in patients where each lab was drawn
+vs patients where it was missing (using full unfiltered df to preserve
+SepsisLabel=1 rows — this is exploration not modeling).
+
+Results:
+- TroponinI:        11.3% sepsis rate when drawn vs 4.8% when missing (2.4x)
+- Fibrinogen:       13.2% vs 5.4% (2.4x)
+- Bilirubin_direct: 11.1% vs 5.9% (1.9x)
+- Lactate:          12.2% vs 3.7% (3.3x) — strongest signal
+
+Hypothesis confirmed. These labs are drawn when clinicians are worried.
+Their presence is itself a clinical signal — independent of the actual value.
+
+Decision: keep all four features despite high missingness.
+The indicator columns (e.g. Lactate_was_missing) are not optional extras —
+they are some of the most informative features in the dataset.
+Raise the drop threshold to >99.5% missing, not 80%.
