@@ -183,7 +183,7 @@ Abstract matches what was built. Every reference verified. Methods explains why 
 - [x] tests/ folder created with test_splits.py stub
 - [x] Original code audited and leakage sources documented
 - [x] All design decisions made and logged
-- [ ] requirements.txt — create at start of Phase 1
+- [x] requirements.txt created
 - [ ] Phase 1 EDA — START HERE NEXT SESSION
 - [ ] Phase 2 Preprocessing
 - [ ] Phase 3 Classical Models
